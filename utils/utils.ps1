@@ -167,7 +167,7 @@ function Invoke-CachedWebRequest {
 }
 
 
-New-DayPath 1
+# New-DayPath 1
 
 # $Config = @{ https: / / adventofcode.com / 2021 / day / 1 / input
 
