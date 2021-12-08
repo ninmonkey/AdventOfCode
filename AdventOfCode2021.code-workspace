@@ -1,7 +1,10 @@
 {
-	"folders": [
+    "folders": [
         {
             "path": "."
+        },
+        {
+            "path": "..\\..\\Power BI\\Buffer\\2021-02\\advent-of-code"
         }
     ],
     "settings": {
@@ -10,6 +13,16 @@
             "MD025": {
                 "front_matter_title": ""
             }
+        },
+        "terminal.integrated.fontSize": 14,
+        "[python]": {
+            "gitlens.codeLens.symbolScopes": [
+                "!Module"
+            ],
+            "editor.wordBasedSuggestions": false,
+            "editor.fontSize": 14
         }
+        // not declare
+        // "powershell.cwd": "${fileDirname}"
     }
 }
