@@ -76,7 +76,7 @@
                 "!Module"
             ],
             "editor.wordBasedSuggestions": false,
-            "editor.fontSize": 14
+            "editor.fontSize": 16
         },
         // not declare
         // "powershell.cwd": "${fileDirname}",
