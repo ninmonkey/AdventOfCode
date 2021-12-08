@@ -4,9 +4,18 @@
 
 - [pathlib](https://docs.python.org/3/library/pathlib.html)
 
-## Python Config
+## VS Code + Python Config
+
+- [reference: listing of many `python` specific config names](https://code.visualstudio.com/docs/python/settings-reference)
+    - [severity level for type checking](https://code.visualstudio.com/docs/python/settings-reference#_python-language-server-settings)
+    - [command variables](https://code.visualstudio.com/docs/editor/variables-reference#_command-variables)
+
+- [reference: automatic VS Code variables](https://code.visualstudio.com/docs/editor/variables-reference)
+  - [reference: automatic variables used by Python extension](https://code.visualstudio.com/docs/python/settings-reference#_predefined-variables)
+  - 
 
 
+- [formatter config](https://code.visualstudio.com/docs/python/editing#_formatterspecific-settings)
 - [configure python testing](https://code.visualstudio.com/docs/python/testing)
 - [debugging -> config options](https://code.visualstudio.com/docs/python/debugging#_set-configuration-options)
 - [debugger from the cli](https://code.visualstudio.com/docs/python/debugging#_command-line-debugging)

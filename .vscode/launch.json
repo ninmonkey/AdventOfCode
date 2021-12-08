@@ -8,7 +8,12 @@
             "name": "Py:🐍 Cur.py",
             "type": "python",
             "request": "launch",
+            "args": [
+                "-Nop"
+            ],
             "program": "${file}",
+            // "cwd": "${fileDirName}",
+            // "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
             // "redirectOutput": true,
             // "autoReload": {}
@@ -17,8 +22,11 @@
             "name": "Py:🐍 <variable>.py",
             "type": "python",
             "request": "launch",
+            "args": [
+                "-Nop"
+            ],
             // "program": "${workspaceFolderBasename}/Day1/py/day1.py",
-            "program": "${workspaceFolder}}/Day1/py/day1.py",
+            "program": "${workspaceFolder}/Day1/day1.py",
             // "program": "${workspaceFolder}Day1/py/day1.py",
             // "program": "${file}",
             "console": "integratedTerminal",

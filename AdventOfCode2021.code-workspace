@@ -7,6 +7,21 @@
             "path": "..\\..\\Power BI\\Buffer\\2021-02\\advent-of-code"
         }
     ],
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": []
+    },
+    "launch": {
+        "configurations": [],
+        "compounds": []
+    },
+    "extensions": {
+        "recommendations": [
+            "ms-python.vscode-pylance",
+            "PowerQuery.vscode-powerquery",
+            "ms-vscode.powershell-preview"
+        ]
+    },
     "settings": {
         "markdownlint.config": {
             "MD028": false,
@@ -21,8 +36,12 @@
             ],
             "editor.wordBasedSuggestions": false,
             "editor.fontSize": 14
-        }
+        },
         // not declare
-        // "powershell.cwd": "${fileDirname}"
+        // "powershell.cwd": "${fileDirname}",
+        "python.autoComplete.addBrackets": true,
+        "python.testing.autoTestDiscoverOnSaveEnabled": true,
+        "python.analysis.autoImportCompletions": true,
+        "python.analysis.typeCheckingMode": "strict",
     }
 }
