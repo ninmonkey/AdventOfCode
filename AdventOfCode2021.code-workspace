@@ -9,7 +9,48 @@
     ],
     "tasks": {
         "version": "2.0.0",
-        "tasks": []
+        "tasks": [
+            {
+                "label": "My Task iter 2",
+                "type": "shell",
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": false,
+                    "panel": "shared",
+                    "showReuseMessage": true,
+                    "clear": false
+                },
+                "command": "pwsh",
+                "args": [
+                    "-Nop",
+                    "-C",
+                    "0..5"
+                ],
+                // "windows": {
+                //     "command": "pwsh"
+                // },
+                "problemMatcher": []
+            }
+            // {
+            //     "label": "My Task iter 2",
+            //     "type": "shell",
+            //     "presentation": {
+            //         "echo": true,
+            //         "reveal": "always",
+            //         "focus": false,
+            //         "panel": "shared",
+            //         "showReuseMessage": true,
+            //         "clear": false
+            //     },
+            //     "command": "pwsh \"-nop\"",
+            //     "args": [
+            //         "-C",
+            //         "0..5"
+            //     ],
+            //     "problemMatcher": []
+            // }
+        ]
     },
     "launch": {
         "configurations": [],
