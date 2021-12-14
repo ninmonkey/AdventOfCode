@@ -64,6 +64,7 @@
         ]
     },
     "settings": {
+        // doc: lint, pylint, etc
         "markdownlint.config": {
             "MD028": false,
             "MD025": {
@@ -83,6 +84,6 @@
         "python.autoComplete.addBrackets": true,
         "python.testing.autoTestDiscoverOnSaveEnabled": true,
         "python.analysis.autoImportCompletions": true,
-        "python.analysis.typeCheckingMode": "strict",
+        // "python.analysis.typeCheckingMode": "strict",
     }
 }

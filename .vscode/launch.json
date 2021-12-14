@@ -25,11 +25,17 @@
             "args": [
                 "-Nop"
             ],
+            "showReturnValue": true,
+            // "internalConsoleOptions": "openOnFirstSessionStart",
+            "justMyCode": true,
+            // "pythonArgs": [],
+            // "redirectOutput": true,
             // "program": "${workspaceFolderBasename}/Day1/py/day1.py",
-            "program": "${workspaceFolder}/Day1/day1.py",
+            "program": "${workspaceFolder}/Day1/day1-i2.py",
             // "program": "${workspaceFolder}Day1/py/day1.py",
             // "program": "${file}",
-            "console": "integratedTerminal",
+            // "console": "integratedTerminal",
+            // "console": "externalTerminal",
             // "redirectOutput": true,
             // "autoReload": {}
         }

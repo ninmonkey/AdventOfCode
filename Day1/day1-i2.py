@@ -1,6 +1,8 @@
 from pathlib import Path
 from functools import reduce
 from typing import List, Any
+from itertools import accumulate
+import operator
 
 input_file = Path('.') / 'man.input_sample.txt'
 text = input_file.read_text("utf8", errors = 'strict')
@@ -13,9 +15,21 @@ def with_h(a: Any, b: Any) -> str:
 def test_is_sorted(a: int, b: int) -> bool:
     return (a < b)
 
+list(accumulate(nums, lambda a,b:  a < b))
+
 count: int = 0
 prev: int = nums[0]
 remaining_nums: List[int] = nums[1:]
+
+
+def accum_sum(a: int, b: int) -> int:
+    return a + b
+
+def accum_if(a: int, b: int) -> int:
+    if(a < b):
+        return 1
+    else:
+        return 0
 
 for next in remaining_nums:
     test: bool = test_is_sorted(prev, next)
@@ -25,8 +39,14 @@ for next in remaining_nums:
 
 print(count)
 
+# def doit(state: int, current: int):
+# def doit(items: List[int], cur: int):
 
-with_h(42, 'dsf')
+    # return 3
+
+# function
+
+# with_h(42, 'dsf')
 
 reduce( lambda a, b: str(a) + str(b), ["a", "b", 4, "c"])
 

@@ -4,6 +4,8 @@
 
 - [f-string literals](https://docs.python.org/3/tutorial/inputoutput.html#fancier-output-formatting)
 - [pathlib](https://docs.python.org/3/library/pathlib.html)
+- [cheatsheet: Type hinting syntax](https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html)
+- [cheatsheet: PyMoTW3](https://pymotw.com/3/)  
 
 ## VS Code + Python Config
 
