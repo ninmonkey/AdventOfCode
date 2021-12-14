@@ -17,23 +17,6 @@ let
             result,
 
 
-    z = List.Range(Depths, 0, 3),
-    src = Depths,
-    len = List.Count(src),
-    offsetList = {0..(len-1)},
-
-    segmentPos = List.Transform(
-        offsetList,
-        (i) =>
-            [
-                Pos = i,
-                Segment = List.Range( src, i, 3)
-            ]
-    ),
-
-    t0 = Table.FromList(segmentPos),
-
-
     CountIncreasingValues = (source as list) as number =>
         // How many times does the depth increase?
         let
@@ -60,17 +43,43 @@ let
         in
             result,
 
+
+
+    src = Depths,
+    GenerateSegments = (source as any) as any =>
+        // inner
+        let
+            len = List.Count(src),
+            offsetList = {0..(len-1)},
+
+            segmentPos = List.Transform(
+                offsetList,
+                (i) =>
+                    [
+                        Pos = i,
+                        Segment = List.Range( src, i, 3)
+                    ]),
+            generateSegments = Table.FromRecords( segmentPos,
+                type table[ Pos = Int64.Type, Segment = List.Type ] ),
+            typing = Table.TransformColumnTypes(generateSegments,{{"Pos", Int64.Type}}),
+            segmentSummary = Table.AddColumn(
+                typing, "Summary", (_) as text => List.Summarize(_[Segment])
+            ),
+            sumSegments = Table.AddColumn(segmentSummary, "SumSegment", (_) as number => List.Sum( [Segment] ), Int64.Type)
+        in
+            sumSegments,
+
+    z = GenerateSegments(Depths),
+
+
+    #"part2-finalCount" = CountIncreasingValues( sumSegments[SumSegment] ),
+
+        // t0 = Table.FromList(segmentPos),
+
     countSample = CountIncreasingValues( Depths ),
     input1Count = CountIncreasingValues( day1_input1[Number] ),
-    Custom1 = Table.FromRecords( segmentPos,
-        type table[ Pos = Int64.Type, Segment = List.Type ] ),
-    #"Changed Type" = Table.TransformColumnTypes(Custom1,{{"Pos", Int64.Type}}),
-    t = Table.AddColumn(
-        #"Changed Type", "Summary", (_) as text => List.Summarize(_[Segment])
-    ),
-    #"Added Custom" = Table.AddColumn(t, "SumSegment", (_) as number => List.Sum( [Segment] ), Int64.Type),
 
-    inputPart2Count = CountIncreasingValues( #"Added Custom"[SumSegment] ),
+
     Results = [
         Original = List.Summarize( Depths ),
         countInc_Sample = countSample,
@@ -80,7 +89,7 @@ let
 
         Original2 = List.Summarize( day1_input1[Number] ),
 
-        Part2_isValid = Assert.Equal( inputPart2Count, 5)
+        Part2_isValid = Assert.Equal( #"part2-finalCount", 5)
     ]
 in
     Results
