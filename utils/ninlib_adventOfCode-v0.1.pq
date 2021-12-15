@@ -1,5 +1,5 @@
-/* PowerQueryLib : v 
-    Generated on: 12/14/2021 9:26 PM
+/* PowerQueryLib : v
+    Generated on: 12/13/2021 8:55 PM
     Source:
         https://github.com/ninmonkey/Ninmonkey.PowerQueryLib
         Jake Bolton ninmonkeys@gmail.com
@@ -7,88 +7,14 @@
     Metadata = [
         LastExecution = DateTime.FixedLocalNow(),
         PQLib = "",
-        GeneratedOn = "2021-12-14T21:26:17.3669608-06:00",
-        Commit = "6abd18dc8a53a1d4ed46c65877eb5565cfaddf43",
+        GeneratedOn = "2021-12-13T20:55:13.0061494-06:00",
+        Commit = "01e78fb500141bb4ca0d91aedee6e91ce49e332d",
         BuildArgIncludes = "'ToText', 'Text', 'Text', 'Text'",
-        BuildArgExcludes = "'$test_', 'wordwrap', 'IP\.Dot', 'regex', 'shared -', 'WebRequest', '\.old\.pq$'",
-        BuildArgFileList = "'Inspect.Type.pq', 'Inspect.Metadata.pq', 'Inspect.MetaOfType.pq', 'List.Summarize.pq', 'Summarize.Record.pq', 'Record.Summarize.pq', 'List.Summarize.pq', 'Type.ToText.pq', 'Table.SelectRemovedColumns.pq'"
+        BuildArgExcludes = "'$test_', 'wordwrap', 'IP\.Dot', 'regex', 'shared -', 'inspect', 'WebRequest', '\.old\.pq$'",
+        BuildArgFileList = "'List.Summarize.pq', 'Summarize.Record.pq', 'Record.Summarize.pq', 'List.Summarize.pq', 'Type.ToText.pq', 'Table.SelectRemovedColumns.pq'"
     ],
     FinalRecord = [
         Lib = Metadata,
-#"Inspect.Metadata" = // md
-    let
-        // Inspect metadata
-        FuncDef = (x as any) as any => Value.Metadata(x), // nullable record not guaranteed
-        // Inspect metadata
-        FuncType = type function (input as any) as any
-            meta [
-                Documentation.Name = "Alias for Value.Metadata(x)",
-                Documentation.LongDescription = "Alias for getting an object's metadata"
-                // Documentation.Examples = {
-                //     [
-                //         Description = "Metadata of object",
-                //         Code = "Inspect.Type( Value.Type )",
-                //         Result = "function"
-                //     ]
-                // }
-            ],
-        enableTesting = false,
-        testResults = Inspect.Metadata( Value.Type ),
-        Inspect.Metadata = Value.ReplaceType(FuncDef, FuncType)
-    in
-        if not enableTesting then Inspect.Metadata else  testResults,
-#"Inspect.MetaOfType" = let
-    // Inspect type
-    FuncDef = (x as any) as record =>
-        let
-            t = Value.Type(x),
-            md = Value.Metadata(x),
-            mdt = Value.Metadata( Value.Type(x) )
-        in
-            [
-                TypeName = Type.ToText( t ),
-                Type = t, Metadata = md, TypeMetadata = mdt
-            ],
-
-    // Inspect type
-    FuncType = type function (input as any) as record
-        meta [
-            Documentation.Name = "Metadata of Type",
-            Documentation.LongDescription = "Sugar for the Metadata of an object's type",
-            Documentation.Examples = {
-                [
-                    Description = "Type of a function",
-                    Code = "Record.FieldNames( Inspect.MetaOfType( BinaryEncoding.Base64 ) )",
-                    Result = "{ ""Documentation.Name"", ""Documentation.Description"", ""Documentation.LongDescription"", ""Documentation.Category"", ""Documentation.Examples"" }"
-                ]
-            }
-        ],
-    // enableTesting = false,
-    // testResults = Record.FieldNames(Inspect.MetaOfType(BinaryEncoding.Base64)),
-    Inspect.MetaOfType = Value.ReplaceType(FuncDef, FuncType)
-in
-    Inspect.MetaOfType,
-#"Inspect.Type" =  let
-        // Inspect type
-        FuncDef = (x as any) => Value.Type(x),
-        // Inspect type
-        FuncType = type function (input as any) as any
-            meta [
-                Documentation.Name = "Alias for Value.Type()",
-                Documentation.LongDescription = "Alias for getting an object's type",
-                Documentation.Examples = {
-                    [
-                        Description = "Type of a function",
-                        Code = "Inspect.Type( Value.Type )",
-                        Result = "function"
-                    ]
-                }
-            ],
-        enableTesting = false,
-        testResults = Inspect.Type( Value.Type ),
-        Inspect.Type = Value.ReplaceType(FuncDef, FuncType)
-    in
-        if not enableTesting then Inspect.Type else  testResults,
 #"List.Summarize" = /*
 
 options:
@@ -351,6 +277,27 @@ in
             selectMissing
 in
     def_Table.SelectRemovedColumns,
+#"Text_JsonToPowerQuery" = let
+    /* converts JSON string to a pastable PowerQuery Literal
+    Otherwise you have to escape values
+
+    Usage:
+        Text_JsonToPowerQuery(
+            Table_ToJson( TableName )
+        )
+
+    */
+    Text_JsonToPowerQuery = (json as text) as text =>
+        let
+            doubleQuote = """",
+            escapeQuotes = Text.Replace(
+                json, doubleQuote,
+                ( doubleQuote & doubleQuote)
+            )
+        in
+            escapeQuotes
+in
+    Text_JsonToPowerQuery,
 #"Text.AnyMatches" = let
 /*
     For a list of values, test any combination of: Text.StartsWith, Text.Contains, Text.EndsWith
@@ -410,27 +357,6 @@ let
     }
 in
     if run_example then tests else Text_IsNullOrWhitespace,
-#"Text.JsonToPowerQuery" = let
-    /* converts JSON string to a pastable PowerQuery Literal
-    Otherwise you have to escape values
-
-    Usage:
-        Text_JsonToPowerQuery(
-            Table_ToJson( TableName )
-        )
-
-    */
-    Text.JsonToPowerQuery = (json as text) as text =>
-        let
-            doubleQuote = """",
-            escapeQuotes = Text.Replace(
-                json, doubleQuote,
-                ( doubleQuote & doubleQuote)
-            )
-        in
-            escapeQuotes
-in
-    Text.JsonToPowerQuery,
 #"Type.ToText" = /*
 
 
