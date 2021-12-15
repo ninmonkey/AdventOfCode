@@ -1,5 +1,5 @@
 /* PowerQueryLib : v 
-    Generated on: 12/14/2021 9:26 PM
+    Generated on: 12/14/2021 9:49 PM
     Source:
         https://github.com/ninmonkey/Ninmonkey.PowerQueryLib
         Jake Bolton ninmonkeys@gmail.com
@@ -7,11 +7,11 @@
     Metadata = [
         LastExecution = DateTime.FixedLocalNow(),
         PQLib = "",
-        GeneratedOn = "2021-12-14T21:26:17.3669608-06:00",
+        GeneratedOn = "2021-12-14T21:49:53.1244091-06:00",
         Commit = "6abd18dc8a53a1d4ed46c65877eb5565cfaddf43",
         BuildArgIncludes = "'ToText', 'Text', 'Text', 'Text'",
         BuildArgExcludes = "'$test_', 'wordwrap', 'IP\.Dot', 'regex', 'shared -', 'WebRequest', '\.old\.pq$'",
-        BuildArgFileList = "'Inspect.Type.pq', 'Inspect.Metadata.pq', 'Inspect.MetaOfType.pq', 'List.Summarize.pq', 'Summarize.Record.pq', 'Record.Summarize.pq', 'List.Summarize.pq', 'Type.ToText.pq', 'Table.SelectRemovedColumns.pq'"
+        BuildArgFileList = "'Inspect.Type.pq', 'Record.Summarize.pq', 'Inspect.Metadata.pq', 'Inspect.MetaOfType.pq', 'List.Summarize.pq', 'Summarize.Rec.pq', 'Summarize.Record.pq', 'Record.Summarize.pq', 'List.Summarize.pq', 'Type.ToText.pq', 'Table.SelectRemovedColumns.pq'"
     ],
     FinalRecord = [
         Lib = Metadata,
@@ -222,7 +222,7 @@ let
 
     */
 
-    fn_Record.Summarize = (
+    Record.Summarize = (
         source as record,
         optional options as nullable record
     ) as text =>
@@ -256,7 +256,7 @@ let
                         // do not throw by default
                         maybeFlatValue =
                             try
-                                if valueIsRecord then @fn_Record.Summarize( value, options )
+                                if valueIsRecord then @Record.Summarize( value, options )
                                 else value,
 
                         flatValue =
@@ -292,7 +292,7 @@ let
                 //     if isRecord then
                 //         //"[nested]"
                 //         "<<" &
-                //         @fn_Record.Summarize( field[Value] )
+                //         @Record.Summarize( field[Value] )
                 //         & ">>"
                 //     else
 
@@ -308,7 +308,7 @@ let
         in
             x3
 in
-    fn_Record.Summarize,
+    Record.Summarize,
 #"Serialize.Text" = let
     /*
     from: https://github.com/microsoft/DataConnectors/blob/master/samples/UnitTesting/UnitTesting.query.pq
